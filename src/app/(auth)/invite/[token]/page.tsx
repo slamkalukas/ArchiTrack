@@ -1,11 +1,27 @@
 "use client";
 
 import { use, useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
+/**
+ * Invite acceptance screen — spec/06-ui-ux.md §3.1. Wired to WP-1's
+ * `/api/invites/[token]/accept` endpoint.
+ *
+ * Note: spec/06-ui-ux.md §3.1 shows the project name in the heading ("Boli ste pozvaní
+ * do projektu RD Novákovci"). Doing that requires a public invite-preview API
+ * (GET /api/invites/[token]) which does not exist yet — that route is outside WP-2's
+ * owned paths (src/app/api/**). The `auth.invite.description` key is kept
+ * interpolation-ready ({projectName}) so whichever WP adds that endpoint can wire it in
+ * with a one-line change here.
+ */
 export default function InvitePage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = use(params);
   const t = useTranslations("auth.invite");
+  const locale = useLocale();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +34,7 @@ export default function InvitePage({ params }: { params: Promise<{ token: string
     setError(null);
 
     if (password !== confirmPassword) {
-      setError(t("confirmPassword"));
+      setError(t("confirmPasswordMismatch"));
       return;
     }
 
@@ -26,7 +42,7 @@ export default function InvitePage({ params }: { params: Promise<{ token: string
     const res = await fetch(`/api/invites/${token}/accept`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, password, locale: "sk" }),
+      body: JSON.stringify({ name, password, locale }),
     });
     setSubmitting(false);
 
@@ -48,55 +64,58 @@ export default function InvitePage({ params }: { params: Promise<{ token: string
 
   if (success) {
     return (
-      <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
-        <p className="text-sm text-muted-foreground">Redirecting to login…</p>
-      </div>
+      <Card>
+        <CardContent className="pt-6">
+          <p className="text-sm text-muted-foreground">{t("redirecting")}</p>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
-      <h1 className="mb-6 font-serif text-2xl text-foreground">{t("title")}</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <label className="flex flex-col gap-1 text-sm">
-          {t("name")}
-          <input
-            type="text"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </label>
-        <label className="flex flex-col gap-1 text-sm">
-          {t("password")}
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </label>
-        <label className="flex flex-col gap-1 text-sm">
-          {t("confirmPassword")}
-          <input
-            type="password"
-            required
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </label>
-        {error && <p className="text-sm text-destructive">{error}</p>}
-        <button
-          type="submit"
-          disabled={submitting}
-          className="mt-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90 disabled:opacity-50"
-        >
-          {t("submit")}
-        </button>
-      </form>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl">{t("title")}</CardTitle>
+        <CardDescription>{t("descriptionGeneric")}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="name">{t("name")}</Label>
+            <Input id="name" required value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="password">{t("password")}</Label>
+            <Input
+              id="password"
+              type="password"
+              autoComplete="new-password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="confirmPassword">{t("confirmPassword")}</Label>
+            <Input
+              id="confirmPassword"
+              type="password"
+              autoComplete="new-password"
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+          {error && (
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+          )}
+          <Button type="submit" disabled={submitting} className="mt-2">
+            {submitting ? t("submitting") : t("submit")}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }

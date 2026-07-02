@@ -30,6 +30,7 @@
       "email": "Email",
       "password": "Password",
       "submit": "Sign in",
+      "submitting": "Signing in…",
       "forgotPassword": "Forgot your password?",
       "invalidCredentials": "Incorrect email or password.",
       "tooManyAttempts": "Too many attempts. Please try again shortly."
@@ -39,27 +40,115 @@
       "description": "Enter your email and we'll send you a password reset link.",
       "email": "Email",
       "submit": "Send link",
-      "confirmation": "If an account with this email exists, we've sent a password reset link to it."
+      "submitting": "Sending…",
+      "confirmation": "If an account with this email exists, we've sent a password reset link to it.",
+      "backToLogin": "Back to sign in"
     },
     "resetPassword": {
       "title": "Set a new password",
       "password": "New password",
       "confirmPassword": "Confirm password",
+      "confirmPasswordMismatch": "Passwords do not match.",
       "submit": "Set password",
+      "submitting": "Setting…",
       "invalidToken": "This password reset link is invalid or has expired.",
-      "success": "Your password has been changed. You can now sign in."
+      "success": "Your password has been changed. You can now sign in.",
+      "backToLogin": "Back to sign in"
     },
     "invite": {
       "title": "You've been invited",
       "description": "You've been invited to join project {projectName}.",
+      "descriptionGeneric": "Create a password to access your project.",
       "name": "Full name",
       "password": "Choose a password",
       "confirmPassword": "Confirm password",
+      "confirmPasswordMismatch": "Passwords do not match.",
       "submit": "Create account",
+      "submitting": "Creating account…",
+      "redirecting": "Redirecting to sign in…",
       "alreadyUsed": "This invite has already been used. Please sign in as usual.",
       "expired": "This invite has expired. Ask your architect for a new one.",
       "invalid": "This invite is not valid."
     },
     "logout": "Sign out"
+  },
+  "nav": {
+    "admin": {
+      "projects": "Projects",
+      "inbox": "Inbox",
+      "settings": "Settings",
+      "logout": "Sign out"
+    },
+    "client": {
+      "overview": "Overview",
+      "progress": "Progress",
+      "documents": "Documents",
+      "messages": "Messages",
+      "profile": "Profile",
+      "logout": "Sign out"
+    },
+    "project": {
+      "overview": "Overview",
+      "tasks": "Phases & Tasks",
+      "files": "Files",
+      "chat": "Chat",
+      "activity": "Activity",
+      "settings": "Settings"
+    }
+  },
+  "ui": {
+    "visibility": {
+      "clientVisible": "Visible to client",
+      "internal": "Internal",
+      "clientVisibleHint": "Client can see this — click to hide",
+      "internalHint": "Client can't see this — click to publish"
+    },
+    "notifications": {
+      "label": "Notifications",
+      "title": "Notifications",
+      "empty": "No notifications yet."
+    },
+    "projectCard": {
+      "overdue": "{count, plural, one {# overdue} other {# overdue}}"
+    },
+    "taskCard": {
+      "milestone": "Milestone"
+    },
+    "kanban": {
+      "todo": "To-do",
+      "inProgress": "In progress",
+      "done": "Done",
+      "empty": "No tasks"
+    },
+    "phase": {
+      "upcoming": "Upcoming",
+      "active": "Active",
+      "done": "Done",
+      "skipped": "Skipped",
+      "weight": "weight {weight}"
+    },
+    "fileTable": {
+      "emptyTitle": "No files yet",
+      "emptyDescription": "Upload the first file by dropping it here or using the upload button.",
+      "expiringSoon": "Expires soon",
+      "columns": {
+        "name": "Name",
+        "version": "Version",
+        "size": "Size",
+        "updated": "Updated",
+        "visibility": "Visibility"
+      }
+    },
+    "chat": {
+      "emptyTitle": "No messages yet",
+      "emptyDescription": "Send the first message to start the conversation with the architect.",
+      "placeholder": "Write a message…",
+      "attach": "Attach file",
+      "send": "Send"
+    },
+    "coverImagePicker": {
+      "prompt": "Drop an image here or click to choose",
+      "remove": "Remove image"
+    }
   }
 }

@@ -1,7 +1,17 @@
+import { requireRole } from "@/lib/authz";
+import { AdminSidebar } from "@/components/layout/admin-sidebar";
+
 /**
- * Minimal placeholder layout for the (admin) route group. WP-2 owns the real sidebar
- * shell (spec/06-ui-ux.md §2).
+ * Admin app shell: left sidebar (logo, Projects, Inbox, Settings, profile) per
+ * spec/06-ui-ux.md §2. Every route in the (admin) group is ADMIN-only.
  */
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <div className="min-h-screen bg-background">{children}</div>;
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const user = await requireRole("ADMIN");
+
+  return (
+    <div className="flex min-h-screen bg-background">
+      <AdminSidebar userName={user.name} userEmail={user.email} />
+      <main className="min-w-0 flex-1">{children}</main>
+    </div>
+  );
 }

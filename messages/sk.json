@@ -30,6 +30,7 @@
       "email": "E-mail",
       "password": "Heslo",
       "submit": "Prihlásiť sa",
+      "submitting": "Prihlasujem…",
       "forgotPassword": "Zabudli ste heslo?",
       "invalidCredentials": "Nesprávny e-mail alebo heslo.",
       "tooManyAttempts": "Príliš veľa pokusov. Skúste to znova o chvíľu."
@@ -39,27 +40,115 @@
       "description": "Zadajte svoj e-mail a pošleme vám odkaz na obnovenie hesla.",
       "email": "E-mail",
       "submit": "Odoslať odkaz",
-      "confirmation": "Ak účet s týmto e-mailom existuje, poslali sme naň odkaz na obnovenie hesla."
+      "submitting": "Odosielam…",
+      "confirmation": "Ak účet s týmto e-mailom existuje, poslali sme naň odkaz na obnovenie hesla.",
+      "backToLogin": "Späť na prihlásenie"
     },
     "resetPassword": {
       "title": "Nastavenie nového hesla",
       "password": "Nové heslo",
       "confirmPassword": "Potvrďte heslo",
+      "confirmPasswordMismatch": "Heslá sa nezhodujú.",
       "submit": "Nastaviť heslo",
+      "submitting": "Nastavujem…",
       "invalidToken": "Odkaz na obnovenie hesla je neplatný alebo vypršal.",
-      "success": "Heslo bolo úspešne zmenené. Môžete sa prihlásiť."
+      "success": "Heslo bolo úspešne zmenené. Môžete sa prihlásiť.",
+      "backToLogin": "Späť na prihlásenie"
     },
     "invite": {
       "title": "Boli ste pozvaní",
       "description": "Boli ste pozvaní do projektu {projectName}.",
+      "descriptionGeneric": "Vytvorte si heslo a získajte prístup k svojmu projektu.",
       "name": "Meno a priezvisko",
       "password": "Zvoľte heslo",
       "confirmPassword": "Potvrďte heslo",
+      "confirmPasswordMismatch": "Heslá sa nezhodujú.",
       "submit": "Vytvoriť účet",
+      "submitting": "Vytváram účet…",
+      "redirecting": "Presmerúvam na prihlásenie…",
       "alreadyUsed": "Táto pozvánka už bola použitá. Prihláste sa prosím bežným spôsobom.",
       "expired": "Platnosť tejto pozvánky vypršala. Požiadajte architekta o novú pozvánku.",
       "invalid": "Táto pozvánka nie je platná."
     },
     "logout": "Odhlásiť sa"
+  },
+  "nav": {
+    "admin": {
+      "projects": "Projekty",
+      "inbox": "Doručená pošta",
+      "settings": "Nastavenia",
+      "logout": "Odhlásiť sa"
+    },
+    "client": {
+      "overview": "Prehľad",
+      "progress": "Postup",
+      "documents": "Dokumenty",
+      "messages": "Správy",
+      "profile": "Profil",
+      "logout": "Odhlásiť sa"
+    },
+    "project": {
+      "overview": "Prehľad",
+      "tasks": "Fázy a úlohy",
+      "files": "Súbory",
+      "chat": "Chat",
+      "activity": "Aktivita",
+      "settings": "Nastavenia"
+    }
+  },
+  "ui": {
+    "visibility": {
+      "clientVisible": "Viditeľné pre klienta",
+      "internal": "Interné",
+      "clientVisibleHint": "Klient toto vidí — kliknutím skryjete",
+      "internalHint": "Klient toto nevidí — kliknutím zverejníte"
+    },
+    "notifications": {
+      "label": "Notifikácie",
+      "title": "Notifikácie",
+      "empty": "Zatiaľ žiadne notifikácie."
+    },
+    "projectCard": {
+      "overdue": "{count, plural, one {# po termíne} few {# po termíne} other {# po termíne}}"
+    },
+    "taskCard": {
+      "milestone": "Míľnik"
+    },
+    "kanban": {
+      "todo": "K vybaveniu",
+      "inProgress": "Prebieha",
+      "done": "Hotovo",
+      "empty": "Žiadne úlohy"
+    },
+    "phase": {
+      "upcoming": "Nadchádzajúca",
+      "active": "Prebieha",
+      "done": "Hotovo",
+      "skipped": "Preskočená",
+      "weight": "váha {weight}"
+    },
+    "fileTable": {
+      "emptyTitle": "Zatiaľ žiadne súbory",
+      "emptyDescription": "Nahrajte prvý súbor presunutím sem alebo pomocou tlačidla nahrať.",
+      "expiringSoon": "Platnosť čoskoro vyprší",
+      "columns": {
+        "name": "Názov",
+        "version": "Verzia",
+        "size": "Veľkosť",
+        "updated": "Upravené",
+        "visibility": "Viditeľnosť"
+      }
+    },
+    "chat": {
+      "emptyTitle": "Zatiaľ žiadne správy",
+      "emptyDescription": "Napíšte prvú správu a začnite konverzáciu s architektom.",
+      "placeholder": "Napíšte správu…",
+      "attach": "Priložiť súbor",
+      "send": "Odoslať"
+    },
+    "coverImagePicker": {
+      "prompt": "Presuňte obrázok sem alebo kliknite pre výber",
+      "remove": "Odstrániť obrázok"
+    }
   }
 }

@@ -1,8 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
+/** Forgot-password screen — spec/06-ui-ux.md §3.1. Wired to WP-1's forgot-password endpoint. */
 export default function ForgotPasswordPage() {
   const t = useTranslations("auth.forgotPassword");
   const [email, setEmail] = useState("");
@@ -23,36 +29,53 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
-        <h1 className="mb-4 font-serif text-2xl text-foreground">{t("title")}</h1>
-        <p className="text-sm text-muted-foreground">{t("confirmation")}</p>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl">{t("title")}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">{t("confirmation")}</p>
+          <Link
+            href="/login"
+            className="mt-4 inline-block text-sm text-primary underline underline-offset-4"
+          >
+            {t("backToLogin")}
+          </Link>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <div className="rounded-xl border border-border bg-card p-8 shadow-sm">
-      <h1 className="mb-2 font-serif text-2xl text-foreground">{t("title")}</h1>
-      <p className="mb-6 text-sm text-muted-foreground">{t("description")}</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <label className="flex flex-col gap-1 text-sm">
-          {t("email")}
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-        </label>
-        <button
-          type="submit"
-          disabled={submitting}
-          className="mt-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90 disabled:opacity-50"
-        >
-          {t("submit")}
-        </button>
-      </form>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl">{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="email">{t("email")}</Label>
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <Button type="submit" disabled={submitting} className="mt-2">
+            {submitting ? t("submitting") : t("submit")}
+          </Button>
+          <Link
+            href="/login"
+            className="text-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {t("backToLogin")}
+          </Link>
+        </form>
+      </CardContent>
+    </Card>
   );
 }

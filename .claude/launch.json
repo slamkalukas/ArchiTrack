@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "set PATH=C:\\Users\\Lukas\\tools\\node-v22.23.1-win-x64;%PATH% && C:\\Users\\Lukas\\tools\\node-v22.23.1-win-x64\\pnpm.cmd dev"
+      ],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
