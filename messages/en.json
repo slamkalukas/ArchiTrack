@@ -150,5 +150,46 @@
       "prompt": "Drop an image here or click to choose",
       "remove": "Remove image"
     }
+  },
+  "chat": {
+    "panel": {
+      "loading": "Loading messages…",
+      "loadOlder": "Load older messages",
+      "seen": "Seen",
+      "deletedPlaceholder": "This message was removed",
+      "archivedReadOnly": "This project is archived — the chat is read-only."
+    }
+  },
+  "comments": {
+    "thread": {
+      "loading": "Loading comments…",
+      "emptyTitle": "No comments yet",
+      "emptyDescription": "Start the discussion below.",
+      "placeholder": "Write a comment…",
+      "replyPlaceholder": "Write a reply…",
+      "reply": "Reply",
+      "send": "Send",
+      "deletedPlaceholder": "This comment was removed"
+    }
+  },
+  "notifications": {
+    "kinds": {
+      "chatMessage": "New message in your project chat",
+      "comment": "New comment on your project",
+      "taskStatus": "A task status changed",
+      "fileAdded": "A new document was added",
+      "phaseDone": "A project phase was completed",
+      "milestone": "A milestone was reached",
+      "invite": "Invite update",
+      "expiryWarning": "A document is expiring soon"
+    },
+    "digest": {
+      "subject": "Your daily ArchiTrack digest"
+    },
+    "preferences": {
+      "label": "Email notifications",
+      "immediate": "Immediately, as they happen",
+      "digest": "Once a day, in a summary"
+    }
   }
 }
