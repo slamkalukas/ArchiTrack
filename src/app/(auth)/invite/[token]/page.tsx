@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, type FormEvent } from "react";
+import { use, useEffect, useState, type FormEvent } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,12 +11,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
  * Invite acceptance screen — spec/06-ui-ux.md §3.1. Wired to WP-1's
  * `/api/invites/[token]/accept` endpoint.
  *
- * Note: spec/06-ui-ux.md §3.1 shows the project name in the heading ("Boli ste pozvaní
- * do projektu RD Novákovci"). Doing that requires a public invite-preview API
- * (GET /api/invites/[token]) which does not exist yet — that route is outside WP-2's
- * owned paths (src/app/api/**). The `auth.invite.description` key is kept
- * interpolation-ready ({projectName}) so whichever WP adds that endpoint can wire it in
- * with a one-line change here.
+ * The heading shows the project name (spec/06-ui-ux.md §3.1) via the public
+ * invite-preview endpoint GET /api/invites/[token]; it falls back to the generic
+ * description while loading or if the preview is unavailable.
  */
 export default function InvitePage({ params }: { params: Promise<{ token: string }> }) {
   const { token } = use(params);
@@ -28,6 +25,20 @@ export default function InvitePage({ params }: { params: Promise<{ token: string
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [projectName, setProjectName] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/invites/${token}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((body: { projectName?: string | null } | null) => {
+        if (!cancelled && body?.projectName) setProjectName(body.projectName);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [token]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -76,7 +87,9 @@ export default function InvitePage({ params }: { params: Promise<{ token: string
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">{t("title")}</CardTitle>
-        <CardDescription>{t("descriptionGeneric")}</CardDescription>
+        <CardDescription>
+          {projectName ? t("description", { projectName }) : t("descriptionGeneric")}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>

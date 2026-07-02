@@ -323,7 +323,7 @@ function ShowcaseContent() {
           <div>
             <p className="mb-2 text-sm text-muted-foreground">Client top bar</p>
             <div className="overflow-hidden rounded-xl border border-border">
-              <ClientTopbar userName="Peter Novák" notifications={mockNotifications} />
+              <ClientTopbar userName="Peter Novák" />
             </div>
           </div>
         </div>

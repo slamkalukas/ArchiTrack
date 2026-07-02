@@ -7,7 +7,8 @@ import { Plus, Search, AlertTriangle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ProjectCard, EmptyState, NotificationBell, type NotificationItem } from "@/components/shared";
+import { ProjectCard, EmptyState, type NotificationItem } from "@/components/shared";
+import { NotificationBellContainer } from "@/features/notifications/components/notification-bell-container";
 import type { DashboardProjectCardDto } from "@/features/projects/types";
 
 interface DashboardViewProps {
@@ -128,7 +129,7 @@ export function DashboardView({ initialProjects, notifications }: DashboardViewP
         <section className="rounded-xl border border-border bg-card p-4">
           <div className="mb-2 flex items-center justify-between">
             <h2 className="font-serif text-base text-foreground">{t("inbox.title")}</h2>
-            <NotificationBell items={notifications} />
+            <NotificationBellContainer />
           </div>
           {notifications.length === 0 && (
             <p className="text-sm text-muted-foreground">{t("inbox.empty")}</p>

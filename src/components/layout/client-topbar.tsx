@@ -7,7 +7,7 @@ import { LogOut, Settings } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import { LocaleSwitcher } from "@/components/shared/locale-switcher";
-import { NotificationBell, type NotificationItem } from "@/components/shared/notification-bell";
+import { NotificationBellContainer } from "@/features/notifications/components/notification-bell-container";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -19,7 +19,6 @@ import {
 
 interface ClientTopbarProps {
   userName: string;
-  notifications?: NotificationItem[];
 }
 
 function initialsOf(name: string) {
@@ -34,7 +33,7 @@ function initialsOf(name: string) {
 }
 
 /** Client top bar only: logo left, language/bell/avatar right — spec/06-ui-ux.md §2. */
-export function ClientTopbar({ userName, notifications = [] }: ClientTopbarProps) {
+export function ClientTopbar({ userName }: ClientTopbarProps) {
   const pathname = usePathname();
   const t = useTranslations("nav.client");
 
@@ -53,7 +52,7 @@ export function ClientTopbar({ userName, notifications = [] }: ClientTopbarProps
         </Link>
         <div className="flex items-center gap-1">
           <LocaleSwitcher />
-          <NotificationBell items={notifications} />
+          <NotificationBellContainer />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button

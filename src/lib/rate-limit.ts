@@ -78,10 +78,15 @@ const globalForRateLimit = globalThis as unknown as {
   chatRateLimiter: TokenBucketRateLimiter | undefined;
 };
 
-/** Auth endpoints: 5 requests/min/IP (spec/05-api.md §9.4). */
+/**
+ * Auth endpoints: 5 requests/min/IP (spec/05-api.md §9.4). Optional
+ * AUTH_RATE_LIMIT_PER_MINUTE override exists for e2e runs, where the whole suite logs in
+ * more than 5 times a minute from one IP; unset (production) keeps the spec value.
+ */
+const authPerMinute = Number(process.env.AUTH_RATE_LIMIT_PER_MINUTE) || 5;
 export const authRateLimiter =
   globalForRateLimit.authRateLimiter ??
-  new TokenBucketRateLimiter({ capacity: 5, refillAmount: 5, intervalMs: 60_000 });
+  new TokenBucketRateLimiter({ capacity: authPerMinute, refillAmount: authPerMinute, intervalMs: 60_000 });
 
 /** Uploads: 60 requests/h/user. */
 export const uploadRateLimiter =

@@ -7,6 +7,9 @@ import { expect, test } from "@playwright/test";
  * first phase as its current phase.
  */
 test("admin creates a project from the Rodinný dom SK template and sees it on the dashboard", async ({ page }) => {
+  // Cold dev-server compiles (worst with all specs compiling routes in parallel) can eat
+  // most of the default 30s before the wizard is even interactive.
+  test.setTimeout(120_000);
   const projectName = `E2E Test Dom ${Date.now()}`;
 
   await page.goto("/login");
@@ -18,8 +21,13 @@ test("admin creates a project from the Rodinný dom SK template and sees it on t
   await page.getByRole("link", { name: /Nový projekt/ }).click();
   await expect(page).toHaveURL(/\/projects\/new$/);
 
-  // Step 1: basic details + template selection.
-  await page.getByLabel("Názov projektu").fill(projectName);
+  // Step 1: basic details + template selection. On a cold dev server, hydration can land
+  // after the first fill and reset the controlled inputs — retry the fill until the form
+  // actually holds the value (the Next button enables).
+  await expect(async () => {
+    await page.getByLabel("Názov projektu").fill(projectName);
+    await expect(page.getByRole("button", { name: "Ďalej" })).toBeEnabled({ timeout: 1_000 });
+  }).toPass({ timeout: 60_000 });
   await page.getByLabel("Lokalita").fill("Bratislava");
 
   await page.getByRole("combobox").filter({ hasText: "Prázdny projekt" }).click();

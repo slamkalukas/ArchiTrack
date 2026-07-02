@@ -10,10 +10,13 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests/e2e",
-  fullyParallel: true,
+  // Single worker everywhere: the suite runs against ONE dev server, and with parallel
+  // workers another spec's first-visit route compile triggers hot reloads that remount
+  // components mid-interaction (observed: the project wizard losing its form state).
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   reporter: "list",
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3100",
@@ -32,5 +35,10 @@ export default defineConfig({
         url: "http://localhost:3100",
         reuseExistingServer: !process.env.CI,
         timeout: 120_000,
+        env: {
+          // The suite logs in more than 5×/min from one IP; see src/lib/rate-limit.ts.
+          AUTH_RATE_LIMIT_PER_MINUTE: "100",
+          APP_URL: "http://localhost:3100",
+        },
       },
 });
