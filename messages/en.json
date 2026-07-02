@@ -327,5 +327,78 @@
         "total": "Total: {total}%"
       }
     }
+  },
+  "phases": {
+    "title": "Phases & Tasks",
+    "addPhase": "Add phase",
+    "newPhaseTitle": "New phase",
+    "editPhaseTitle": "Edit phase",
+    "name": "Name",
+    "description": "Description",
+    "weight": "Weight",
+    "visibility": "Visibility",
+    "status": "Status",
+    "empty": {
+      "title": "No phases yet",
+      "description": "Add the project's first phase to start planning tasks."
+    },
+    "markDoneConfirmTitle": "Mark phase as done?",
+    "markDoneConfirmDescription": "All tasks in this phase are complete. Do you want to mark the phase as done?",
+    "activateNextPrompt": "Activate the next upcoming phase?",
+    "markDone": "Mark as done",
+    "deleteConfirmTitle": "Delete phase?",
+    "deleteConfirmDescription": "A phase can only be deleted when it has no tasks.",
+    "deleteNotEmpty": "The phase still has tasks — move or delete them first.",
+    "viewToggle": {
+      "board": "Board",
+      "list": "List"
+    },
+    "scope": {
+      "allPhases": "All phases",
+      "label": "Phase"
+    }
+  },
+  "tasks": {
+    "addTask": "Add task",
+    "newTaskTitle": "New task",
+    "editTaskTitle": "Edit task",
+    "title": "Title",
+    "description": "Description",
+    "phase": "Phase",
+    "status": "Status",
+    "dueDate": "Due date",
+    "weight": "Weight",
+    "milestone": "Milestone",
+    "milestoneHint": "Highlight as a milestone on the client timeline",
+    "visibility": "Visible to client",
+    "assignee": "Assignee",
+    "assigneeArchitect": "Architect",
+    "assigneeExternal": "External contact",
+    "contact": "Contact",
+    "contactNone": "No contact",
+    "noDueDate": "No due date",
+    "save": "Save task",
+    "create": "Create task",
+    "delete": "Delete task",
+    "deleteConfirmTitle": "Delete task?",
+    "deleteConfirmDescription": "A task that was ever visible to the client is only hidden, not permanently removed.",
+    "saveError": "Could not save the task — please try again.",
+    "loadError": "Could not load tasks.",
+    "reorderError": "Could not save the move — please try again.",
+    "sortByDueDate": "Sort by due date",
+    "comments": "{count, plural, one {# comment} other {# comments}}",
+    "listView": {
+      "columns": {
+        "title": "Title",
+        "phase": "Phase",
+        "status": "Status",
+        "dueDate": "Due date",
+        "visibility": "Visibility"
+      }
+    },
+    "empty": {
+      "title": "No tasks yet",
+      "description": "Add this phase's first task using the \"Add task\" button."
+    }
   }
 }
