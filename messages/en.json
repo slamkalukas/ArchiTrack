@@ -400,5 +400,37 @@
       "title": "No tasks yet",
       "description": "Add this phase's first task using the \"Add task\" button."
     }
+  },
+  "files": {
+    "title": "Files",
+    "rootFolder": "All files",
+    "downloadAll": "Download all (ZIP)",
+    "emptyTitle": "No files here yet",
+    "emptyDescription": "Drop files above or use the upload button to add the first one.",
+    "uploadRestricted": "You can only upload files into the \"From client\" folder.",
+    "visibilityUpdated": "Visibility updated.",
+    "virtualizedNotice": "Showing {count} files — list is virtualized for performance.",
+    "upload": {
+      "dropPrompt": "Drop files here or click to upload",
+      "dropHint": "Multiple files supported. Same name as an existing file creates a new version.",
+      "browse": "Choose files",
+      "success": "{count, plural, one {# file uploaded} other {# files uploaded}}"
+    },
+    "createFolder": {
+      "action": "New folder",
+      "prompt": "Folder name",
+      "success": "Folder created."
+    },
+    "preview": {
+      "noPreview": "No preview available for this file type.",
+      "download": "Download",
+      "previousVersions": "Previous versions"
+    },
+    "errors": {
+      "loadFailed": "Could not load files.",
+      "uploadFailed": "Upload failed — please try again.",
+      "saveFailed": "Could not save — please try again.",
+      "createFolderFailed": "Could not create folder."
+    }
   }
 }

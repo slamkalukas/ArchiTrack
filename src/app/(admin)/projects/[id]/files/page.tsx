@@ -1,16 +1,13 @@
-import { getTranslations } from "next-intl/server";
 import { requireProjectAccess } from "@/lib/authz";
-import { EmptyState } from "@/components/shared";
+import { FilesView } from "@/features/files";
 
 /**
- * Placeholder for the Files tab — owned by WP-5 (spec/07-agent-workplan.md).
- * WP-3 only wires the tab navigation; WP-5 replaces this page with the folder tree +
- * file table.
+ * Admin Files tab (spec/06-ui-ux.md §3.4, spec/04-features.md §5).
+ * Route: /projects/:id/files — matches `ProjectTabNav`'s `files` link.
  */
 export default async function ProjectFilesPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  await requireProjectAccess(id, "ADMIN");
-  const t = await getTranslations("projects.detail.tabsPlaceholder");
+  const { id: projectId } = await params;
+  const { user } = await requireProjectAccess(projectId);
 
-  return <EmptyState title={t("files")} />;
+  return <FilesView projectId={projectId} role={user.role} />;
 }
