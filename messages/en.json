@@ -1,0 +1,65 @@
+{
+  "common": {
+    "appName": "ArchiTrack",
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "confirm": "Confirm",
+    "search": "Search",
+    "yes": "Yes",
+    "no": "No",
+    "error": {
+      "generic": "Could not save — please try again.",
+      "notFound": "Page not found.",
+      "unauthorized": "You are not authorized to perform this action."
+    },
+    "localeSwitcher": {
+      "label": "Language",
+      "sk": "Slovensky",
+      "en": "English"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot your password?",
+      "invalidCredentials": "Incorrect email or password.",
+      "tooManyAttempts": "Too many attempts. Please try again shortly."
+    },
+    "forgotPassword": {
+      "title": "Password recovery",
+      "description": "Enter your email and we'll send you a password reset link.",
+      "email": "Email",
+      "submit": "Send link",
+      "confirmation": "If an account with this email exists, we've sent a password reset link to it."
+    },
+    "resetPassword": {
+      "title": "Set a new password",
+      "password": "New password",
+      "confirmPassword": "Confirm password",
+      "submit": "Set password",
+      "invalidToken": "This password reset link is invalid or has expired.",
+      "success": "Your password has been changed. You can now sign in."
+    },
+    "invite": {
+      "title": "You've been invited",
+      "description": "You've been invited to join project {projectName}.",
+      "name": "Full name",
+      "password": "Choose a password",
+      "confirmPassword": "Confirm password",
+      "submit": "Create account",
+      "alreadyUsed": "This invite has already been used. Please sign in as usual.",
+      "expired": "This invite has expired. Ask your architect for a new one.",
+      "invalid": "This invite is not valid."
+    },
+    "logout": "Sign out"
+  }
+}

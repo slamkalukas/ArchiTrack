@@ -1,0 +1,65 @@
+{
+  "common": {
+    "appName": "ArchiTrack",
+    "loading": "Načítava sa…",
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "edit": "Upraviť",
+    "close": "Zavrieť",
+    "back": "Späť",
+    "next": "Ďalej",
+    "confirm": "Potvrdiť",
+    "search": "Hľadať",
+    "yes": "Áno",
+    "no": "Nie",
+    "error": {
+      "generic": "Nepodarilo sa uložiť — skúste znova.",
+      "notFound": "Stránka nebola nájdená.",
+      "unauthorized": "Nemáte oprávnenie na túto akciu."
+    },
+    "localeSwitcher": {
+      "label": "Jazyk",
+      "sk": "Slovensky",
+      "en": "English"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Prihlásenie",
+      "email": "E-mail",
+      "password": "Heslo",
+      "submit": "Prihlásiť sa",
+      "forgotPassword": "Zabudli ste heslo?",
+      "invalidCredentials": "Nesprávny e-mail alebo heslo.",
+      "tooManyAttempts": "Príliš veľa pokusov. Skúste to znova o chvíľu."
+    },
+    "forgotPassword": {
+      "title": "Obnovenie hesla",
+      "description": "Zadajte svoj e-mail a pošleme vám odkaz na obnovenie hesla.",
+      "email": "E-mail",
+      "submit": "Odoslať odkaz",
+      "confirmation": "Ak účet s týmto e-mailom existuje, poslali sme naň odkaz na obnovenie hesla."
+    },
+    "resetPassword": {
+      "title": "Nastavenie nového hesla",
+      "password": "Nové heslo",
+      "confirmPassword": "Potvrďte heslo",
+      "submit": "Nastaviť heslo",
+      "invalidToken": "Odkaz na obnovenie hesla je neplatný alebo vypršal.",
+      "success": "Heslo bolo úspešne zmenené. Môžete sa prihlásiť."
+    },
+    "invite": {
+      "title": "Boli ste pozvaní",
+      "description": "Boli ste pozvaní do projektu {projectName}.",
+      "name": "Meno a priezvisko",
+      "password": "Zvoľte heslo",
+      "confirmPassword": "Potvrďte heslo",
+      "submit": "Vytvoriť účet",
+      "alreadyUsed": "Táto pozvánka už bola použitá. Prihláste sa prosím bežným spôsobom.",
+      "expired": "Platnosť tejto pozvánky vypršala. Požiadajte architekta o novú pozvánku.",
+      "invalid": "Táto pozvánka nie je platná."
+    },
+    "logout": "Odhlásiť sa"
+  }
+}

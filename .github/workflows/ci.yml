@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DATABASE_URL: "postgresql://architrack:architrack@localhost:5432/architrack?schema=public"
+  AUTH_SECRET: "ci-only-secret-not-for-production-use-1234567890"
+  APP_URL: "http://localhost:3000"
+  SMTP_HOST: "smtp.example.com"
+  SMTP_PORT: "587"
+  SMTP_USER: "ci"
+  SMTP_PASS: "ci"
+  SMTP_FROM: "ArchiTrack CI <ci@architrack.local>"
+  UPLOADS_DIR: "./data/uploads"
+  MAX_UPLOAD_MB: "500"
+  DEFAULT_LOCALE: "sk"
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: architrack
+          POSTGRES_PASSWORD: architrack
+          POSTGRES_DB: architrack
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U architrack -d architrack"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Prisma generate
+        run: pnpm db:generate
+
+      - name: Run migrations
+        run: pnpm db:migrate:deploy
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: i18n key parity check
+        run: node scripts/check-i18n-parity.mjs

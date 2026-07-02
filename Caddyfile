@@ -1,0 +1,24 @@
+{
+	# Set $APP_DOMAIN and an admin email in production (see .env / deployment docs).
+	email admin@{$APP_DOMAIN:localhost}
+}
+
+{$APP_DOMAIN:localhost} {
+	encode zstd gzip
+
+	# Large file uploads (spec/02-architecture.md §3, §4.6 — up to MAX_UPLOAD_MB, default 500MB).
+	request_body {
+		max_size 512MB
+	}
+
+	# SSE endpoint must not be buffered — flush_interval -1 disables response buffering.
+	handle /api/events* {
+		reverse_proxy app:3000 {
+			flush_interval -1
+		}
+	}
+
+	handle {
+		reverse_proxy app:3000
+	}
+}

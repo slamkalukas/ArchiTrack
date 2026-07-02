@@ -1,0 +1,25 @@
+
+# Dev-only Postgres for local `pnpm dev` work. The app itself runs on the host, not here.
+# Usage: docker compose -f docker-compose.dev.yml up -d db
+# Credentials below must match the DATABASE_URL / POSTGRES_* keys in .env.example.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: architrack
+      POSTGRES_PASSWORD: architrack
+      POSTGRES_DB: architrack
+    ports:
+      # Host port is overridable via ARCHITRACK_DB_PORT for machines where 5432 is
+      # already taken by another project (defaults to the canonical 5432).
+      - "${ARCHITRACK_DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata_dev:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U architrack -d architrack"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata_dev:
