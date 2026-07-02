@@ -150,5 +150,78 @@
       "prompt": "Presuňte obrázok sem alebo kliknite pre výber",
       "remove": "Odstrániť obrázok"
     }
+  },
+  "phases": {
+    "title": "Fázy a úlohy",
+    "addPhase": "Pridať fázu",
+    "newPhaseTitle": "Nová fáza",
+    "editPhaseTitle": "Upraviť fázu",
+    "name": "Názov",
+    "description": "Popis",
+    "weight": "Váha",
+    "visibility": "Viditeľnosť",
+    "status": "Stav",
+    "empty": {
+      "title": "Zatiaľ žiadne fázy",
+      "description": "Pridajte prvú fázu projektu a začnite plánovať úlohy."
+    },
+    "markDoneConfirmTitle": "Označiť fázu ako hotovú?",
+    "markDoneConfirmDescription": "Všetky úlohy v tejto fáze sú dokončené. Chcete fázu označiť ako hotovú?",
+    "activateNextPrompt": "Aktivovať ďalšiu nadchádzajúcu fázu?",
+    "markDone": "Označiť ako hotovú",
+    "deleteConfirmTitle": "Odstrániť fázu?",
+    "deleteConfirmDescription": "Fázu je možné odstrániť len ak neobsahuje žiadne úlohy.",
+    "deleteNotEmpty": "Fáza obsahuje úlohy — najprv ich presuňte alebo odstráňte.",
+    "viewToggle": {
+      "board": "Nástenka",
+      "list": "Zoznam"
+    },
+    "scope": {
+      "allPhases": "Všetky fázy",
+      "label": "Fáza"
+    }
+  },
+  "tasks": {
+    "addTask": "Pridať úlohu",
+    "newTaskTitle": "Nová úloha",
+    "editTaskTitle": "Upraviť úlohu",
+    "title": "Názov",
+    "description": "Popis",
+    "phase": "Fáza",
+    "status": "Stav",
+    "dueDate": "Termín",
+    "weight": "Váha",
+    "milestone": "Míľnik",
+    "milestoneHint": "Zvýrazniť ako míľnik na časovej osi klienta",
+    "visibility": "Viditeľné pre klienta",
+    "assignee": "Priradené",
+    "assigneeArchitect": "Architekt",
+    "assigneeExternal": "Externý kontakt",
+    "contact": "Kontakt",
+    "contactNone": "Bez kontaktu",
+    "noDueDate": "Bez termínu",
+    "save": "Uložiť úlohu",
+    "create": "Vytvoriť úlohu",
+    "delete": "Odstrániť úlohu",
+    "deleteConfirmTitle": "Odstrániť úlohu?",
+    "deleteConfirmDescription": "Úloha, ktorá bola niekedy viditeľná pre klienta, sa iba skryje, nie odstráni natrvalo.",
+    "saveError": "Úlohu sa nepodarilo uložiť — skúste znova.",
+    "loadError": "Úlohy sa nepodarilo načítať.",
+    "reorderError": "Presun sa nepodarilo uložiť — skúste znova.",
+    "sortByDueDate": "Zoradiť podľa termínu",
+    "comments": "{count, plural, one {# komentár} few {# komentáre} other {# komentárov}}",
+    "listView": {
+      "columns": {
+        "title": "Názov",
+        "phase": "Fáza",
+        "status": "Stav",
+        "dueDate": "Termín",
+        "visibility": "Viditeľnosť"
+      }
+    },
+    "empty": {
+      "title": "Zatiaľ žiadne úlohy",
+      "description": "Pridajte prvú úlohu tejto fázy pomocou tlačidla „Pridať úlohu“."
+    }
   }
 }
