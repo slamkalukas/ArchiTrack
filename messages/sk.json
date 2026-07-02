@@ -150,5 +150,182 @@
       "prompt": "Presuňte obrázok sem alebo kliknite pre výber",
       "remove": "Odstrániť obrázok"
     }
+  },
+  "notifications": {
+    "inviteSent": "Bola odoslaná pozvánka na {email}"
+  },
+  "dashboard": {
+    "title": "Projekty",
+    "subtitle": "Prehľad všetkých aktívnych projektov.",
+    "searchPlaceholder": "Hľadať projekt…",
+    "newProject": "Nový projekt",
+    "filters": {
+      "all": "Všetky",
+      "active": "Aktívne",
+      "onHold": "Pozastavené",
+      "archived": "Archivované"
+    },
+    "empty": {
+      "title": "Zatiaľ žiadne projekty",
+      "description": "Vytvorte prvý projekt a začnite sledovať jeho priebeh.",
+      "action": "Vytvoriť projekt"
+    },
+    "emptyFiltered": {
+      "title": "Žiadne projekty nevyhovujú filtru",
+      "description": "Skúste zmeniť vyhľadávanie alebo filter stavu."
+    },
+    "inbox": {
+      "title": "Doručená pošta",
+      "empty": "Zatiaľ žiadne notifikácie."
+    },
+    "expiring": {
+      "title": "Čoskoro vypršia",
+      "empty": "Žiadne dokumenty čoskoro nevypršia.",
+      "days": "{days, plural, one {# deň} few {# dni} other {# dní}}"
+    }
+  },
+  "projects": {
+    "wizard": {
+      "title": "Nový projekt",
+      "step1": {
+        "title": "Základné údaje",
+        "name": "Názov projektu",
+        "namePlaceholder": "napr. RD Novákovci — Pezinok",
+        "location": "Lokalita",
+        "locationPlaceholder": "Adresa alebo parcela",
+        "description": "Popis (viditeľný pre klienta)",
+        "cover": "Titulný obrázok",
+        "clientsTitle": "Klienti",
+        "clientsHint": "Pridajte klientov teraz alebo neskôr v nastaveniach projektu.",
+        "addClient": "Pridať klienta",
+        "clientName": "Meno",
+        "clientEmail": "E-mail",
+        "removeClient": "Odstrániť klienta",
+        "template": "Šablóna projektu",
+        "templateBlank": "Prázdny projekt (bez šablóny)",
+        "startDate": "Predpokladaný začiatok",
+        "targetDate": "Predpokladaný termín"
+      },
+      "step2": {
+        "title": "Upraviť fázy a úlohy",
+        "description": "Odznačte úlohy, ktoré tento projekt nepotrebuje. Fázy zostávajú, aj keď sú všetky ich úlohy odznačené.",
+        "selectAll": "Vybrať všetky",
+        "deselectAll": "Zrušiť všetky",
+        "taskCount": "{count, plural, one {# úloha} few {# úlohy} other {# úloh}}"
+      },
+      "step3": {
+        "title": "Zhrnutie",
+        "name": "Názov",
+        "location": "Lokalita",
+        "template": "Šablóna",
+        "noTemplate": "Bez šablóny",
+        "phases": "Fázy",
+        "tasks": "Úlohy",
+        "clients": "Klienti",
+        "noClients": "Žiadni klienti (pridáte neskôr)"
+      },
+      "back": "Späť",
+      "next": "Ďalej",
+      "create": "Vytvoriť projekt",
+      "creating": "Vytváram projekt…",
+      "error": "Projekt sa nepodarilo vytvoriť. Skúste to znova."
+    },
+    "detail": {
+      "notFound": "Projekt nebol nájdený.",
+      "overview": {
+        "title": "Prehľad",
+        "currentPhase": "Aktuálna fáza",
+        "progress": "Postup projektu",
+        "nextDue": "Najbližší termín",
+        "noNextDue": "Žiadne nadchádzajúce termíny",
+        "unread": "Neprečítané správy",
+        "location": "Lokalita",
+        "clients": "Klienti",
+        "recentActivity": "Nedávna aktivita",
+        "noActivity": "Zatiaľ žiadna aktivita."
+      },
+      "tabsPlaceholder": {
+        "tasks": "Fázy a úlohy tohto projektu budú čoskoro k dispozícii.",
+        "files": "Súbory tohto projektu budú čoskoro k dispozícii.",
+        "chat": "Chat tohto projektu bude čoskoro k dispozícii."
+      }
+    },
+    "settings": {
+      "title": "Nastavenia",
+      "tabs": {
+        "general": "Všeobecné",
+        "members": "Členovia",
+        "contacts": "Kontakty",
+        "weights": "Váhy fáz"
+      },
+      "general": {
+        "name": "Názov projektu",
+        "status": "Stav",
+        "location": "Lokalita",
+        "description": "Popis",
+        "startDate": "Predpokladaný začiatok",
+        "targetDate": "Predpokladaný termín",
+        "cover": "Titulný obrázok",
+        "save": "Uložiť zmeny",
+        "saved": "Zmeny uložené.",
+        "error": "Zmeny sa nepodarilo uložiť.",
+        "archiveTitle": "Archivácia projektu",
+        "archiveDescription": "Archivovaný projekt je pre klienta prístupný len na čítanie a po 90 dňoch sa mu skryje z prehľadu.",
+        "archive": "Archivovať projekt",
+        "unarchive": "Obnoviť projekt",
+        "archiveConfirmTitle": "Archivovať projekt?",
+        "archiveConfirmDescription": "Klient bude mať k projektu prístup len na čítanie. Túto akciu môžete kedykoľvek vrátiť späť."
+      },
+      "members": {
+        "title": "Členovia projektu",
+        "addMember": "Pridať klienta",
+        "name": "Meno",
+        "email": "E-mail",
+        "locale": "Jazyk",
+        "role": "Rola",
+        "status": "Stav",
+        "statusActive": "Aktívny",
+        "statusPending": "Čaká na prijatie pozvánky",
+        "resendInvite": "Znova odoslať pozvánku",
+        "resendSent": "Pozvánka bola znova odoslaná.",
+        "remove": "Odstrániť",
+        "removeConfirmTitle": "Odstrániť člena?",
+        "removeConfirmDescription": "{name} stratí prístup k tomuto projektu.",
+        "addTitle": "Pridať klienta",
+        "add": "Pozvať",
+        "adding": "Pozývam…",
+        "added": "Klient bol pozvaný.",
+        "error": "Nepodarilo sa pridať klienta.",
+        "emailConflict": "Tento e-mail patrí existujúcemu administrátorskému účtu.",
+        "noClients": "Zatiaľ žiadni klienti."
+      },
+      "contacts": {
+        "title": "Externé kontakty",
+        "addContact": "Pridať kontakt",
+        "name": "Meno",
+        "role": "Rola",
+        "email": "E-mail",
+        "phone": "Telefón",
+        "note": "Poznámka",
+        "add": "Pridať",
+        "adding": "Pridávam…",
+        "save": "Uložiť",
+        "delete": "Odstrániť",
+        "deleteConfirmTitle": "Odstrániť kontakt?",
+        "deleteConfirmDescription": "{name} bude odstránený zo zoznamu kontaktov.",
+        "inUse": "Tento kontakt je priradený k úlohe a nedá sa odstrániť.",
+        "noContacts": "Zatiaľ žiadne kontakty.",
+        "noContactsDescription": "Pridajte externých špecialistov ako statika, geodeta alebo stavebný úrad."
+      },
+      "weights": {
+        "title": "Váhy fáz",
+        "description": "Váhy určujú, akou mierou fáza prispieva k celkovému postupu projektu. Súčet nemusí byť presne 100.",
+        "phase": "Fáza",
+        "weight": "Váha (%)",
+        "save": "Uložiť váhy",
+        "saved": "Váhy boli uložené.",
+        "total": "Súčet: {total}%"
+      }
+    }
   }
 }

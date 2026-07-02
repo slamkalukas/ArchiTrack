@@ -150,5 +150,182 @@
       "prompt": "Drop an image here or click to choose",
       "remove": "Remove image"
     }
+  },
+  "notifications": {
+    "inviteSent": "An invite was sent to {email}"
+  },
+  "dashboard": {
+    "title": "Projects",
+    "subtitle": "Overview of all active projects.",
+    "searchPlaceholder": "Search projects…",
+    "newProject": "New project",
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "onHold": "On hold",
+      "archived": "Archived"
+    },
+    "empty": {
+      "title": "No projects yet",
+      "description": "Create your first project to start tracking its progress.",
+      "action": "Create project"
+    },
+    "emptyFiltered": {
+      "title": "No projects match this filter",
+      "description": "Try changing the search or status filter."
+    },
+    "inbox": {
+      "title": "Inbox",
+      "empty": "No notifications yet."
+    },
+    "expiring": {
+      "title": "Expiring soon",
+      "empty": "No documents expiring soon.",
+      "days": "{days, plural, one {# day} other {# days}}"
+    }
+  },
+  "projects": {
+    "wizard": {
+      "title": "New project",
+      "step1": {
+        "title": "Basic details",
+        "name": "Project name",
+        "namePlaceholder": "e.g. RD Novákovci — Pezinok",
+        "location": "Location",
+        "locationPlaceholder": "Address or parcel",
+        "description": "Description (visible to client)",
+        "cover": "Cover image",
+        "clientsTitle": "Clients",
+        "clientsHint": "Add clients now or later from the project settings.",
+        "addClient": "Add client",
+        "clientName": "Name",
+        "clientEmail": "Email",
+        "removeClient": "Remove client",
+        "template": "Project template",
+        "templateBlank": "Blank project (no template)",
+        "startDate": "Expected start",
+        "targetDate": "Expected completion"
+      },
+      "step2": {
+        "title": "Edit phases & tasks",
+        "description": "Uncheck any tasks this project doesn't need. Phases stay even if all their tasks are unchecked.",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all",
+        "taskCount": "{count, plural, one {# task} other {# tasks}}"
+      },
+      "step3": {
+        "title": "Summary",
+        "name": "Name",
+        "location": "Location",
+        "template": "Template",
+        "noTemplate": "No template",
+        "phases": "Phases",
+        "tasks": "Tasks",
+        "clients": "Clients",
+        "noClients": "No clients (add them later)"
+      },
+      "back": "Back",
+      "next": "Next",
+      "create": "Create project",
+      "creating": "Creating project…",
+      "error": "Could not create the project. Please try again."
+    },
+    "detail": {
+      "notFound": "Project not found.",
+      "overview": {
+        "title": "Overview",
+        "currentPhase": "Current phase",
+        "progress": "Project progress",
+        "nextDue": "Next due date",
+        "noNextDue": "No upcoming deadlines",
+        "unread": "Unread messages",
+        "location": "Location",
+        "clients": "Clients",
+        "recentActivity": "Recent activity",
+        "noActivity": "No activity yet."
+      },
+      "tabsPlaceholder": {
+        "tasks": "This project's phases & tasks will be available soon.",
+        "files": "This project's files will be available soon.",
+        "chat": "This project's chat will be available soon."
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "tabs": {
+        "general": "General",
+        "members": "Members",
+        "contacts": "Contacts",
+        "weights": "Phase weights"
+      },
+      "general": {
+        "name": "Project name",
+        "status": "Status",
+        "location": "Location",
+        "description": "Description",
+        "startDate": "Expected start",
+        "targetDate": "Expected completion",
+        "cover": "Cover image",
+        "save": "Save changes",
+        "saved": "Changes saved.",
+        "error": "Could not save changes.",
+        "archiveTitle": "Project archiving",
+        "archiveDescription": "An archived project is read-only for the client and is hidden from their home after 90 days.",
+        "archive": "Archive project",
+        "unarchive": "Restore project",
+        "archiveConfirmTitle": "Archive this project?",
+        "archiveConfirmDescription": "The client will only have read-only access. You can undo this at any time."
+      },
+      "members": {
+        "title": "Project members",
+        "addMember": "Add client",
+        "name": "Name",
+        "email": "Email",
+        "locale": "Language",
+        "role": "Role",
+        "status": "Status",
+        "statusActive": "Active",
+        "statusPending": "Awaiting invite acceptance",
+        "resendInvite": "Resend invite",
+        "resendSent": "Invite resent.",
+        "remove": "Remove",
+        "removeConfirmTitle": "Remove member?",
+        "removeConfirmDescription": "{name} will lose access to this project.",
+        "addTitle": "Add client",
+        "add": "Invite",
+        "adding": "Inviting…",
+        "added": "Client invited.",
+        "error": "Could not add the client.",
+        "emailConflict": "This email belongs to an existing admin account.",
+        "noClients": "No clients yet."
+      },
+      "contacts": {
+        "title": "External contacts",
+        "addContact": "Add contact",
+        "name": "Name",
+        "role": "Role",
+        "email": "Email",
+        "phone": "Phone",
+        "note": "Note",
+        "add": "Add",
+        "adding": "Adding…",
+        "save": "Save",
+        "delete": "Delete",
+        "deleteConfirmTitle": "Delete contact?",
+        "deleteConfirmDescription": "{name} will be removed from the contacts list.",
+        "inUse": "This contact is assigned to a task and cannot be deleted.",
+        "noContacts": "No contacts yet.",
+        "noContactsDescription": "Add external specialists such as a structural engineer, surveyor, or building authority."
+      },
+      "weights": {
+        "title": "Phase weights",
+        "description": "Weights determine how much each phase contributes to overall project progress. The total doesn't need to be exactly 100.",
+        "phase": "Phase",
+        "weight": "Weight (%)",
+        "save": "Save weights",
+        "saved": "Weights saved.",
+        "total": "Total: {total}%"
+      }
+    }
   }
 }
