@@ -152,7 +152,25 @@
     }
   },
   "notifications": {
-    "inviteSent": "Bola odoslaná pozvánka na {email}"
+    "inviteSent": "Bola odoslaná pozvánka na {email}",
+    "kinds": {
+      "chatMessage": "Nová správa v chate vášho projektu",
+      "comment": "Nový komentár vo vašom projekte",
+      "taskStatus": "Zmenil sa stav úlohy",
+      "fileAdded": "Pribudol nový dokument",
+      "phaseDone": "Fáza projektu bola dokončená",
+      "milestone": "Bol dosiahnutý míľnik",
+      "invite": "Aktualizácia pozvánky",
+      "expiryWarning": "Platnosť dokumentu čoskoro vyprší"
+    },
+    "digest": {
+      "subject": "Váš denný prehľad z ArchiTrack"
+    },
+    "preferences": {
+      "label": "E-mailové notifikácie",
+      "immediate": "Okamžite, tak ako nastanú",
+      "digest": "Raz denne, súhrnne"
+    }
   },
   "dashboard": {
     "title": "Projekty",
@@ -431,6 +449,27 @@
       "uploadFailed": "Nahrávanie zlyhalo — skúste to znova.",
       "saveFailed": "Nepodarilo sa uložiť — skúste znova.",
       "createFolderFailed": "Nepodarilo sa vytvoriť priečinok."
+    }
+  },
+  "chat": {
+    "panel": {
+      "loading": "Načítavam správy…",
+      "loadOlder": "Načítať staršie správy",
+      "seen": "Videné",
+      "deletedPlaceholder": "Táto správa bola odstránená",
+      "archivedReadOnly": "Tento projekt je archivovaný — chat je iba na čítanie."
+    }
+  },
+  "comments": {
+    "thread": {
+      "loading": "Načítavam komentáre…",
+      "emptyTitle": "Zatiaľ žiadne komentáre",
+      "emptyDescription": "Začnite diskusiu nižšie.",
+      "placeholder": "Napíšte komentár…",
+      "replyPlaceholder": "Napíšte odpoveď…",
+      "reply": "Odpovedať",
+      "send": "Odoslať",
+      "deletedPlaceholder": "Tento komentár bol odstránený"
     }
   }
 }
