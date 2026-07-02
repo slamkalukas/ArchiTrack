@@ -150,5 +150,37 @@
       "prompt": "Presuňte obrázok sem alebo kliknite pre výber",
       "remove": "Odstrániť obrázok"
     }
+  },
+  "files": {
+    "title": "Súbory",
+    "rootFolder": "Všetky súbory",
+    "downloadAll": "Stiahnuť všetko (ZIP)",
+    "emptyTitle": "Zatiaľ tu nie sú žiadne súbory",
+    "emptyDescription": "Presuňte súbory vyššie alebo použite tlačidlo nahrať pre pridanie prvého súboru.",
+    "uploadRestricted": "Súbory môžete nahrávať len do priečinka „Od klienta“.",
+    "visibilityUpdated": "Viditeľnosť bola aktualizovaná.",
+    "virtualizedNotice": "Zobrazených {count} súborov — zoznam je virtualizovaný kvôli výkonu.",
+    "upload": {
+      "dropPrompt": "Presuňte súbory sem alebo kliknite pre nahratie",
+      "dropHint": "Podporované sú viaceré súbory. Rovnaký názov ako existujúci súbor vytvorí novú verziu.",
+      "browse": "Vybrať súbory",
+      "success": "{count, plural, one {# súbor nahraný} few {# súbory nahrané} other {# súborov nahraných}}"
+    },
+    "createFolder": {
+      "action": "Nový priečinok",
+      "prompt": "Názov priečinka",
+      "success": "Priečinok bol vytvorený."
+    },
+    "preview": {
+      "noPreview": "Pre tento typ súboru nie je dostupný náhľad.",
+      "download": "Stiahnuť",
+      "previousVersions": "Predchádzajúce verzie"
+    },
+    "errors": {
+      "loadFailed": "Nepodarilo sa načítať súbory.",
+      "uploadFailed": "Nahrávanie zlyhalo — skúste to znova.",
+      "saveFailed": "Nepodarilo sa uložiť — skúste znova.",
+      "createFolderFailed": "Nepodarilo sa vytvoriť priečinok."
+    }
   }
 }

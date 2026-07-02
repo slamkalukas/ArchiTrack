@@ -26,6 +26,7 @@ yarn-error.log*
 
 # Local uploads (dev only; prod uses a Docker volume)
 /data/uploads/
+/.uploads/
 
 # Playwright / Vitest artifacts
 /coverage/
