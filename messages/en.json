@@ -471,5 +471,93 @@
       "send": "Send",
       "deletedPlaceholder": "This comment was removed"
     }
+  },
+  "portal": {
+    "switcher": {
+      "label": "Project"
+    },
+    "home": {
+      "progress": "Progress",
+      "currentlyRunning": "Currently underway",
+      "milestones": "Milestones",
+      "recentDocuments": "Latest documents",
+      "recentUpdates": "Recent updates",
+      "noDocumentsTitle": "No documents yet",
+      "noDocumentsDescription": "Once the architect shares documents, they'll appear here.",
+      "openChat": "Send a message",
+      "noProjectTitle": "You don't have a project yet",
+      "noProjectDescription": "Once the architect adds you to a project, it will appear here."
+    },
+    "activity": {
+      "emptyTitle": "No activity yet",
+      "emptyDescription": "Once something changes on the project, you'll see it here.",
+      "file_uploaded": "The architect added a new document",
+      "file_visibility_changed": "A document's visibility changed",
+      "task_status_changed": "A task's status changed",
+      "task_visibility_changed": "A new visible task was added",
+      "phase_status_changed": "A project phase status changed",
+      "chat_message_sent": "New chat message",
+      "comment_created": "A new comment was added",
+      "fallback": "Project update"
+    },
+    "progress": {
+      "title": "Progress",
+      "noProjectTitle": "You don't have a project yet",
+      "noProjectDescription": "Once the architect adds you to a project, it will appear here.",
+      "emptyTitle": "No phases yet",
+      "emptyDescription": "Project progress will show up once the architect sets up phases.",
+      "noVisibleTasks": "No visible tasks for this phase yet.",
+      "milestone": "Milestone",
+      "phaseStatus": {
+        "upcoming": "Upcoming",
+        "active": "Active",
+        "done": "Done",
+        "skipped": "Skipped"
+      }
+    },
+    "documents": {
+      "noProjectTitle": "You don't have a project yet",
+      "noProjectDescription": "Once the architect adds you to a project, it will appear here."
+    },
+    "messages": {
+      "noProjectTitle": "You don't have a project yet",
+      "noProjectDescription": "Once the architect adds you to a project, it will appear here."
+    },
+    "profile": {
+      "title": "Profile",
+      "saved": "Saved",
+      "passwordSaved": "Password changed",
+      "passwordError": "Could not change password — check your current password.",
+      "logout": "Log out",
+      "sections": {
+        "profile": "Personal details",
+        "password": "Change password",
+        "gdpr": "My data"
+      },
+      "fields": {
+        "name": "Name",
+        "phone": "Phone",
+        "language": "Language",
+        "emailDigest": "Email digest",
+        "emailDigestHint": "Get a once-a-day summary instead of immediate emails.",
+        "currentPassword": "Current password",
+        "newPassword": "New password",
+        "changePassword": "Change password"
+      },
+      "gdpr": {
+        "description": "Under GDPR you have the right to export and to request deletion of your data.",
+        "exportTitle": "Export my data",
+        "exportDescription": "Download a JSON file with your profile, messages, and comments.",
+        "exportAction": "Download export",
+        "deletionTitle": "Account deletion",
+        "deletionDescription": "Ask the architect to delete or anonymize your account.",
+        "deletionAction": "Request deletion",
+        "deletionSentAction": "Request sent",
+        "deletionSent": "Your account deletion request was sent to the architect.",
+        "confirmTitle": "Really request account deletion?",
+        "confirmDescription": "We'll email the architect asking them to delete or anonymize your account. This action is performed manually by the architect.",
+        "confirmAction": "Yes, send request"
+      }
+    }
   }
 }

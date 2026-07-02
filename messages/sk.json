@@ -471,5 +471,93 @@
       "send": "Odoslať",
       "deletedPlaceholder": "Tento komentár bol odstránený"
     }
+  },
+  "portal": {
+    "switcher": {
+      "label": "Projekt"
+    },
+    "home": {
+      "progress": "Postup",
+      "currentlyRunning": "Práve prebieha",
+      "milestones": "Míľniky",
+      "recentDocuments": "Najnovšie dokumenty",
+      "recentUpdates": "Aktuality",
+      "noDocumentsTitle": "Zatiaľ žiadne dokumenty",
+      "noDocumentsDescription": "Akonáhle architekt zdieľa dokumenty, objavia sa tu.",
+      "openChat": "Napísať správu",
+      "noProjectTitle": "Zatiaľ nemáte žiadny projekt",
+      "noProjectDescription": "Keď vás architekt priradí k projektu, zobrazí sa tu."
+    },
+    "activity": {
+      "emptyTitle": "Zatiaľ žiadna aktivita",
+      "emptyDescription": "Akonáhle na projekte niekto niečo zmení, uvidíte to tu.",
+      "file_uploaded": "Architekt pridal nový dokument",
+      "file_visibility_changed": "Zmenila sa viditeľnosť dokumentu",
+      "task_status_changed": "Zmenil sa stav úlohy",
+      "task_visibility_changed": "Pribudla nová viditeľná úloha",
+      "phase_status_changed": "Zmenil sa stav fázy projektu",
+      "chat_message_sent": "Nová správa v chate",
+      "comment_created": "Pribudol nový komentár",
+      "fallback": "Aktualizácia projektu"
+    },
+    "progress": {
+      "title": "Postup",
+      "noProjectTitle": "Zatiaľ nemáte žiadny projekt",
+      "noProjectDescription": "Keď vás architekt priradí k projektu, zobrazí sa tu.",
+      "emptyTitle": "Zatiaľ žiadne fázy",
+      "emptyDescription": "Postup projektu sa zobrazí, akonáhle architekt nastaví fázy.",
+      "noVisibleTasks": "Pre túto fázu zatiaľ nie sú žiadne viditeľné úlohy.",
+      "milestone": "Míľnik",
+      "phaseStatus": {
+        "upcoming": "Nadchádzajúca",
+        "active": "Prebieha",
+        "done": "Hotovo",
+        "skipped": "Preskočená"
+      }
+    },
+    "documents": {
+      "noProjectTitle": "Zatiaľ nemáte žiadny projekt",
+      "noProjectDescription": "Keď vás architekt priradí k projektu, zobrazí sa tu."
+    },
+    "messages": {
+      "noProjectTitle": "Zatiaľ nemáte žiadny projekt",
+      "noProjectDescription": "Keď vás architekt priradí k projektu, zobrazí sa tu."
+    },
+    "profile": {
+      "title": "Profil",
+      "saved": "Uložené",
+      "passwordSaved": "Heslo bolo zmenené",
+      "passwordError": "Nepodarilo sa zmeniť heslo — skontrolujte aktuálne heslo.",
+      "logout": "Odhlásiť sa",
+      "sections": {
+        "profile": "Osobné údaje",
+        "password": "Zmena hesla",
+        "gdpr": "Moje údaje"
+      },
+      "fields": {
+        "name": "Meno",
+        "phone": "Telefón",
+        "language": "Jazyk",
+        "emailDigest": "E-mailový súhrn",
+        "emailDigestHint": "Namiesto okamžitých e-mailov dostávajte raz denne súhrn noviniek.",
+        "currentPassword": "Aktuálne heslo",
+        "newPassword": "Nové heslo",
+        "changePassword": "Zmeniť heslo"
+      },
+      "gdpr": {
+        "description": "Podľa GDPR máte právo na export aj vymazanie svojich údajov.",
+        "exportTitle": "Export mojich údajov",
+        "exportDescription": "Stiahnite si JSON súbor so svojím profilom, správami a komentármi.",
+        "exportAction": "Stiahnuť export",
+        "deletionTitle": "Vymazanie konta",
+        "deletionDescription": "Požiadajte architekta o vymazanie alebo anonymizáciu vášho konta.",
+        "deletionAction": "Požiadať o vymazanie",
+        "deletionSentAction": "Žiadosť odoslaná",
+        "deletionSent": "Žiadosť o vymazanie konta bola odoslaná architektovi.",
+        "confirmTitle": "Naozaj požiadať o vymazanie konta?",
+        "confirmDescription": "Architektovi pošleme e-mail so žiadosťou o vymazanie alebo anonymizáciu vášho konta. Túto akciu vykoná architekt manuálne.",
+        "confirmAction": "Áno, odoslať žiadosť"
+      }
+    }
   }
 }
