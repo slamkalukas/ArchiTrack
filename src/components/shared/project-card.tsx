@@ -32,6 +32,7 @@ function CoverFallback({ name }: { name: string }) {
 /** Admin dashboard project card: cover, serif name, clients, phase chip, progress. */
 export function ProjectCard({ project, href, className }: ProjectCardProps) {
   const t = useTranslations("ui.projectCard");
+  const tCommon = useTranslations("common");
 
   const body = (
     <Card
@@ -69,7 +70,7 @@ export function ProjectCard({ project, href, className }: ProjectCardProps) {
           )}
         </div>
         <div className="space-y-1.5">
-          <Progress value={project.progress} />
+          <Progress value={project.progress} aria-label={tCommon("progressLabel", { percent: project.progress })} />
           <p className="text-right text-xs tabular-nums text-muted-foreground">
             {project.progress}%
           </p>

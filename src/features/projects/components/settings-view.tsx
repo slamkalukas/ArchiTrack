@@ -19,7 +19,20 @@ interface SettingsViewProps {
 export function SettingsView({ project }: SettingsViewProps) {
   const t = useTranslations("projects.settings");
   const router = useRouter();
+  // `router.refresh()` re-renders this page's server component and hands this client
+  // component a fresh `project` prop, but a plain `useState(project)` initializer only
+  // runs once, on mount — it does not resync when the prop changes on a later render of
+  // the *same* component instance. Without the "adjust state during render" pattern
+  // below (react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes),
+  // the Members/Contacts/Weights tabs (which rely solely on `refresh()`, unlike
+  // General's own `setCurrent` merge on save) would silently keep showing stale data
+  // after every mutation — verified live via tests/e2e/wp8-invite-flow.spec.ts.
+  const [prevProject, setPrevProject] = useState(project);
   const [current, setCurrent] = useState(project);
+  if (project !== prevProject) {
+    setPrevProject(project);
+    setCurrent(project);
+  }
 
   function refresh() {
     router.refresh();

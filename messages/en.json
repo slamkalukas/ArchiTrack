@@ -13,6 +13,7 @@
     "search": "Search",
     "yes": "Yes",
     "no": "No",
+    "progressLabel": "Progress: {percent}%",
     "error": {
       "generic": "Could not save — please try again.",
       "notFound": "Page not found.",

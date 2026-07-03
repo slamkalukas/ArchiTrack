@@ -13,6 +13,7 @@
     "search": "Hľadať",
     "yes": "Áno",
     "no": "Nie",
+    "progressLabel": "Priebeh: {percent} %",
     "error": {
       "generic": "Nepodarilo sa uložiť — skúste znova.",
       "notFound": "Stránka nebola nájdená.",

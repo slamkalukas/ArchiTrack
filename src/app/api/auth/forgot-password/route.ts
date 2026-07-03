@@ -36,19 +36,27 @@ export async function POST(request: NextRequest) {
       const resetUrl = `${process.env.APP_URL}/reset-password?token=${token}`;
       const isSk = user.locale === "sk";
 
-      await sendMail({
-        to: user.email,
-        subject: isSk ? "Obnovenie hesla — ArchiTrack" : "Password reset — ArchiTrack",
-        text: `${resetUrl}`,
-        html: renderEmailLayout({
-          heading: isSk ? "Obnovenie hesla" : "Reset your password",
-          bodyHtml: isSk
-            ? "Kliknutím na tlačidlo nižšie si nastavíte nové heslo. Odkaz je platný 1 hodinu."
-            : "Click the button below to set a new password. This link is valid for 1 hour.",
-          buttonText: isSk ? "Nastaviť nové heslo" : "Set new password",
-          buttonUrl: resetUrl,
-        }),
-      });
+      try {
+        await sendMail({
+          to: user.email,
+          subject: isSk ? "Obnovenie hesla — ArchiTrack" : "Password reset — ArchiTrack",
+          text: `${resetUrl}`,
+          html: renderEmailLayout({
+            heading: isSk ? "Obnovenie hesla" : "Reset your password",
+            bodyHtml: isSk
+              ? "Kliknutím na tlačidlo nižšie si nastavíte nové heslo. Odkaz je platný 1 hodinu."
+              : "Click the button below to set a new password. This link is valid for 1 hour.",
+            buttonText: isSk ? "Nastaviť nové heslo" : "Set new password",
+            buttonUrl: resetUrl,
+          }),
+        });
+      } catch (error) {
+        // Reset token is already committed above; a broken SMTP config must not surface
+        // as a 500 here — this endpoint's contract is "always 200" so it never leaks
+        // account existence (see docblock above). See the matching fix in
+        // src/app/api/projects/[id]/members/route.ts.
+        console.error("[forgot-password] reset email failed to send", error);
+      }
     }
 
     // Always 200 — do not reveal whether the account exists.

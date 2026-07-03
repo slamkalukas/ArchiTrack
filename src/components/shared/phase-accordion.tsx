@@ -31,6 +31,7 @@ export function PhaseAccordion({
   className,
 }: PhaseAccordionProps) {
   const t = useTranslations("ui.phase");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(defaultOpen);
   const statusLabel = t(
     phase.status === "UPCOMING"
@@ -64,7 +65,11 @@ export function PhaseAccordion({
             )}
           </div>
           <div className="mt-2 flex items-center gap-2">
-            <Progress value={phase.progress} className="max-w-xs" />
+            <Progress
+              value={phase.progress}
+              className="max-w-xs"
+              aria-label={tCommon("progressLabel", { percent: phase.progress })}
+            />
             <span className="text-xs tabular-nums text-muted-foreground">{phase.progress}%</span>
           </div>
         </div>

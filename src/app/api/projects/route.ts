@@ -147,19 +147,25 @@ export async function POST(request: NextRequest) {
     for (const invite of pendingInviteEmails) {
       const inviteUrl = `${process.env.APP_URL}/invite/${invite.token}`;
       const isSk = invite.locale === "sk";
-      await sendMail({
-        to: invite.email,
-        subject: isSk ? `Boli ste pozvaní do projektu ${result.name}` : `You've been invited to ${result.name}`,
-        text: inviteUrl,
-        html: renderEmailLayout({
-          heading: isSk ? "Boli ste pozvaní" : "You've been invited",
-          bodyHtml: isSk
-            ? `Boli ste pozvaní do projektu <strong>${result.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
-            : `You've been invited to project <strong>${result.name}</strong>. Click below to create your account.`,
-          buttonText: isSk ? "Vytvoriť účet" : "Create account",
-          buttonUrl: inviteUrl,
-        }),
-      });
+      try {
+        await sendMail({
+          to: invite.email,
+          subject: isSk ? `Boli ste pozvaní do projektu ${result.name}` : `You've been invited to ${result.name}`,
+          text: inviteUrl,
+          html: renderEmailLayout({
+            heading: isSk ? "Boli ste pozvaní" : "You've been invited",
+            bodyHtml: isSk
+              ? `Boli ste pozvaní do projektu <strong>${result.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
+              : `You've been invited to project <strong>${result.name}</strong>. Click below to create your account.`,
+            buttonText: isSk ? "Vytvoriť účet" : "Create account",
+            buttonUrl: inviteUrl,
+          }),
+        });
+      } catch (error) {
+        // Project + membership + invite rows are already committed above — see the
+        // matching try/catch in src/app/api/projects/[id]/members/route.ts.
+        console.error("[projects] invite email failed to send", error);
+      }
     }
 
     return NextResponse.json({ project: result }, { status: 201 });

@@ -44,19 +44,25 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
 
     const inviteUrl = `${process.env.APP_URL}/invite/${token}`;
     const isSk = target.locale === "sk";
-    await sendMail({
-      to: target.email,
-      subject: isSk ? `Boli ste pozvaní do projektu ${project.name}` : `You've been invited to ${project.name}`,
-      text: inviteUrl,
-      html: renderEmailLayout({
-        heading: isSk ? "Boli ste pozvaní" : "You've been invited",
-        bodyHtml: isSk
-          ? `Boli ste pozvaní do projektu <strong>${project.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
-          : `You've been invited to project <strong>${project.name}</strong>. Click below to create your account.`,
-        buttonText: isSk ? "Vytvoriť účet" : "Create account",
-        buttonUrl: inviteUrl,
-      }),
-    });
+    try {
+      await sendMail({
+        to: target.email,
+        subject: isSk ? `Boli ste pozvaní do projektu ${project.name}` : `You've been invited to ${project.name}`,
+        text: inviteUrl,
+        html: renderEmailLayout({
+          heading: isSk ? "Boli ste pozvaní" : "You've been invited",
+          bodyHtml: isSk
+            ? `Boli ste pozvaní do projektu <strong>${project.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
+            : `You've been invited to project <strong>${project.name}</strong>. Click below to create your account.`,
+          buttonText: isSk ? "Vytvoriť účet" : "Create account",
+          buttonUrl: inviteUrl,
+        }),
+      });
+    } catch (error) {
+      // The new invite token is already committed above — see the matching try/catch in
+      // src/app/api/projects/[id]/members/route.ts for the rationale.
+      console.error("[invites] resend email failed to send", error);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {

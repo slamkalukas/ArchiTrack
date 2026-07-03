@@ -24,6 +24,7 @@ interface ProgressPhaseCardProps {
  */
 export async function ProgressPhaseCard({ phase }: ProgressPhaseCardProps) {
   const t = await getTranslations("portal.progress");
+  const tCommon = await getTranslations("common");
 
   const statusLabel = t(`phaseStatus.${phase.status.toLowerCase()}` as never);
 
@@ -44,7 +45,11 @@ export async function ProgressPhaseCard({ phase }: ProgressPhaseCardProps) {
 
       <div className="px-5 py-4">
         <div className="mb-4 flex items-center gap-2">
-          <Progress value={phase.progress} className="max-w-xs" />
+          <Progress
+            value={phase.progress}
+            className="max-w-xs"
+            aria-label={tCommon("progressLabel", { percent: phase.progress })}
+          />
           <span className="text-xs tabular-nums text-muted-foreground">{phase.progress}%</span>
         </div>
 

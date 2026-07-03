@@ -29,6 +29,7 @@ function CoverFallback({ name }: { name: string }) {
  */
 export async function PortalHero({ project }: PortalHeroProps) {
   const t = await getTranslations("portal.home");
+  const tCommon = await getTranslations("common");
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card">
@@ -49,7 +50,12 @@ export async function PortalHero({ project }: PortalHeroProps) {
       </div>
 
       <div className="flex flex-col items-center gap-4 px-5 py-8 text-center sm:px-8">
-        <ProgressRing value={project.progress} size={180} sublabel={t("progress")} />
+        <ProgressRing
+          value={project.progress}
+          size={180}
+          sublabel={t("progress")}
+          aria-label={tCommon("progressLabel", { percent: project.progress })}
+        />
         {project.currentPhase && (
           <div className="max-w-xl space-y-1">
             <p className="text-sm text-muted-foreground">

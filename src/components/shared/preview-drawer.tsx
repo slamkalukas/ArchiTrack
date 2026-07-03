@@ -32,6 +32,10 @@ export function PreviewDrawer({
         open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
       )}
       aria-hidden={!open}
+      // `aria-hidden` alone leaves the close button and drawer content focusable via
+      // Tab, which axe-core's aria-hidden-focus / WCAG 4.1.2 rule (rightly) flags —
+      // `inert` also removes it from the tab order and AT while the drawer is closed.
+      inert={!open}
     >
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
       <aside

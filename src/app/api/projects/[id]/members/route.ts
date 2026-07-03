@@ -68,19 +68,26 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
       const project = await db.project.findUniqueOrThrow({ where: { id: projectId }, select: { name: true } });
       const inviteUrl = `${process.env.APP_URL}/invite/${result.inviteToken}`;
       const isSk = body.locale === "sk";
-      await sendMail({
-        to: email,
-        subject: isSk ? `Boli ste pozvaní do projektu ${project.name}` : `You've been invited to ${project.name}`,
-        text: inviteUrl,
-        html: renderEmailLayout({
-          heading: isSk ? "Boli ste pozvaní" : "You've been invited",
-          bodyHtml: isSk
-            ? `Boli ste pozvaní do projektu <strong>${project.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
-            : `You've been invited to project <strong>${project.name}</strong>. Click below to create your account.`,
-          buttonText: isSk ? "Vytvoriť účet" : "Create account",
-          buttonUrl: inviteUrl,
-        }),
-      });
+      try {
+        await sendMail({
+          to: email,
+          subject: isSk ? `Boli ste pozvaní do projektu ${project.name}` : `You've been invited to ${project.name}`,
+          text: inviteUrl,
+          html: renderEmailLayout({
+            heading: isSk ? "Boli ste pozvaní" : "You've been invited",
+            bodyHtml: isSk
+              ? `Boli ste pozvaní do projektu <strong>${project.name}</strong>. Kliknutím nižšie si vytvoríte účet.`
+              : `You've been invited to project <strong>${project.name}</strong>. Click below to create your account.`,
+            buttonText: isSk ? "Vytvoriť účet" : "Create account",
+            buttonUrl: inviteUrl,
+          }),
+        });
+      } catch (error) {
+        // The membership + invite row are already committed above — a broken/unreachable
+        // SMTP config (e.g. a placeholder host in .env) must not roll back or fail the
+        // whole request; the admin can still resend the invite once mail is fixed.
+        console.error("[members] invite email failed to send", error);
+      }
     }
 
     return NextResponse.json(

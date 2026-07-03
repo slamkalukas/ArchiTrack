@@ -13,8 +13,14 @@
   --ink-muted: #6b6b66;
   --accent: #2f5d50;
   --accent-soft: #e8efec;
-  --status-todo: #9ca3af;
-  --status-in-progress: #b07c3f;
+  /* #9ca3af (gray-400) read as text on its own /15 badge background at ~2.24:1 —
+     below WCAG AA's 4.5:1 (spec/07-agent-workplan.md WP-8 a11y audit, docs/QA.md).
+     Darkened to gray-600 for text-safe contrast; the dot/bar uses of this token
+     (kanban column headers, status dots) are decorative and unaffected. */
+  --status-todo: #4b5563;
+  /* Same WCAG AA text-contrast fix as --status-todo above: #b07c3f as badge text on its
+     own /15 background was ~3.06:1. Darkened while keeping the amber hue. */
+  --status-in-progress: #7a5427;
   --status-done: #2f5d50;
   --danger: #b04a3f;
   --border-hairline: #e5e5e0;

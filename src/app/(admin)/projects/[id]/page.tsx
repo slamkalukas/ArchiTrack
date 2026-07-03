@@ -28,6 +28,7 @@ export default async function ProjectOverviewPage({ params }: { params: Promise<
   const { id } = await params;
   const { user } = await requireProjectAccess(id, "ADMIN");
   const t = await getTranslations("projects.detail.overview");
+  const tCommon = await getTranslations("common");
 
   const project = await db.project.findUnique({
     where: { id },
@@ -68,7 +69,7 @@ export default async function ProjectOverviewPage({ params }: { params: Promise<
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
       <Card className="flex flex-col items-center gap-3 p-6 lg:col-span-1">
-        <ProgressRing value={progress} sublabel={t("progress")} />
+        <ProgressRing value={progress} sublabel={t("progress")} aria-label={tCommon("progressLabel", { percent: progress })} />
         {currentPhase && (
           <p className="text-center text-sm text-muted-foreground">
             {t("currentPhase")}: <span className="font-medium text-foreground">{currentPhase.name}</span>

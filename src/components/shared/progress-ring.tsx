@@ -12,6 +12,8 @@ interface ProgressRingProps {
   /** Center label; defaults to the rounded percentage in serif numerals. */
   label?: React.ReactNode;
   sublabel?: React.ReactNode;
+  /** Accessible name for the `role="progressbar"` element (WCAG 4.1.2 — axe `aria-label`). */
+  "aria-label"?: string;
 }
 
 /**
@@ -25,6 +27,7 @@ export function ProgressRing({
   className,
   label,
   sublabel,
+  "aria-label": ariaLabel,
 }: ProgressRingProps) {
   const clamped = Math.min(100, Math.max(0, value));
   const radius = (size - strokeWidth) / 2;
@@ -46,6 +49,7 @@ export function ProgressRing({
       aria-valuenow={clamped}
       aria-valuemin={0}
       aria-valuemax={100}
+      aria-label={ariaLabel}
     >
       <svg width={size} height={size} className="-rotate-90">
         <circle

@@ -71,7 +71,7 @@ export async function requestAccountDeletion(user: SessionUser): Promise<void> {
   });
 
   await Promise.all(
-    admins.map((admin) => {
+    admins.map(async (admin) => {
       const isSk = admin.locale === "sk";
       const heading = isSk ? "Žiadosť o vymazanie konta" : "Account deletion request";
       const body = isSk
@@ -81,12 +81,19 @@ export async function requestAccountDeletion(user: SessionUser): Promise<void> {
       const html = renderEmailLayout({ heading, bodyHtml: `<p>${body}</p>` });
       const text = `${heading}\n\n${user.name} (${user.email}) — ${isSk ? "žiadosť o vymazanie konta" : "account deletion request"}.`;
 
-      return sendMail({
-        to: admin.email,
-        subject: isSk ? "Žiadosť o vymazanie konta — ArchiTrack" : "Account deletion request — ArchiTrack",
-        html,
-        text,
-      });
+      try {
+        await sendMail({
+          to: admin.email,
+          subject: isSk ? "Žiadosť o vymazanie konta — ArchiTrack" : "Account deletion request — ArchiTrack",
+          html,
+          text,
+        });
+      } catch (error) {
+        // Best-effort per admin — a broken SMTP config (or one bad admin address) must
+        // not fail the client's deletion request as a whole. See the matching fix in
+        // src/app/api/projects/[id]/members/route.ts.
+        console.error("[gdpr] deletion-request email failed to send", error);
+      }
     }),
   );
 }

@@ -1,0 +1,32 @@
+# Keeps the Docker build context small and the build reproducible — without this,
+# `docker build` sends node_modules/.next/.git/tests/etc. to the daemon on every build
+# (observed during WP-8 backup-drill testing: multi-hundred-MB context transfer that
+# had nothing to do with the actual app image).
+
+node_modules
+.next
+.git
+.github
+
+# Local env — never bake secrets into the image; real config comes from `env_file: .env`
+# in docker-compose.yml at *run* time, not build time.
+.env
+.env.local
+.env.*.local
+
+# Not needed to build or run the production image.
+tests
+docs
+scripts
+spec
+test-results
+playwright-report
+coverage
+blob-report
+data/uploads
+
+*.tsbuildinfo
+.DS_Store
+.vscode
+.idea
+.claude
