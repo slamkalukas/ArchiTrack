@@ -560,5 +560,12 @@
         "confirmAction": "Áno, odoslať žiadosť"
       }
     }
+  },
+  "inbox": {
+    "title": "Doručená pošta",
+    "empty": "Zatiaľ žiadne upozornenia.",
+    "markAllRead": "Označiť všetko ako prečítané",
+    "unreadCount": "{count, plural, one {# neprečítané upozornenie} few {# neprečítané upozornenia} other {# neprečítaných upozornení}}",
+    "allRead": "Všetko máte prečítané."
   }
 }

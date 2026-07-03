@@ -560,5 +560,12 @@
         "confirmAction": "Yes, send request"
       }
     }
+  },
+  "inbox": {
+    "title": "Inbox",
+    "empty": "No notifications yet.",
+    "markAllRead": "Mark all as read",
+    "unreadCount": "{count, plural, one {# unread notification} other {# unread notifications}}",
+    "allRead": "You're all caught up."
   }
 }
