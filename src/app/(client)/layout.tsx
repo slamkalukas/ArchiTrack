@@ -1,12 +1,21 @@
-import { requireRole } from "@/lib/authz";
+import { redirect } from "next/navigation";
+import { requireRole, requireUser } from "@/lib/authz";
 import { ClientTopbar } from "@/components/layout/client-topbar";
 
 /**
  * Client portal app shell: top bar only (logo, language, bell, avatar), content
- * max-width 1100px centered, mobile-first — spec/06-ui-ux.md §2.
+ * max-width 1100px centered, mobile-first — spec/06-ui-ux.md §2. Missing session
+ * cookies are redirected by the proxy middleware; this handles expired/invalid tokens
+ * (→ /login) and ADMIN users landing on portal routes (→ dashboard).
  */
 export default async function ClientLayout({ children }: { children: React.ReactNode }) {
-  const user = await requireRole("CLIENT");
+  let user;
+  try {
+    user = await requireRole("CLIENT");
+  } catch {
+    const authenticated = await requireUser().catch(() => null);
+    redirect(authenticated ? "/dashboard" : "/login");
+  }
 
   return (
     <div className="min-h-screen bg-background">
