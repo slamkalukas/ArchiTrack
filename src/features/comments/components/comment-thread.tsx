@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,8 @@ interface CommentThreadProps {
   subjectKind: "task" | "file";
   subjectId: string;
   className?: string;
+  /** Reports the live total (incl. replies) so embedders can keep count badges in sync. */
+  onCountChange?: (count: number) => void;
 }
 
 function initialsOf(name: string) {
@@ -31,12 +33,17 @@ function initialsOf(name: string) {
  * Server enforces visibility (client can only reach client-visible subjects) — this
  * component just renders whatever the API returns.
  */
-export function CommentThread({ subjectKind, subjectId, className }: CommentThreadProps) {
+export function CommentThread({ subjectKind, subjectId, className, onCountChange }: CommentThreadProps) {
   const t = useTranslations("comments.thread");
   const { comments, loading, error, post, posting } = useCommentThread(subjectKind, subjectId);
   const [value, setValue] = useState("");
   const [replyTo, setReplyTo] = useState<string | null>(null);
   const [replyValue, setReplyValue] = useState("");
+
+  const total = comments.reduce((sum, c) => sum + 1 + c.replies.length, 0);
+  useEffect(() => {
+    if (!loading) onCountChange?.(total);
+  }, [loading, total, onCountChange]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();

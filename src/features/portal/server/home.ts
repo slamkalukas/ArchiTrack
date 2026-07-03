@@ -97,6 +97,18 @@ async function getRecentClientDocuments(projectId: string): Promise<PortalDocume
 /** Postup tab: phases with client-visible tasks shaped for the vertical checklist view. */
 export async function getPortalPhases(projectId: string, user: SessionUser): Promise<PortalPhase[]> {
   const phases = await listPhasesForProject(projectId, user);
+
+  // One grouped query for comment counts across all visible tasks (no per-task N+1).
+  const taskIds = phases.flatMap((phase) => phase.tasks.map((task) => task.id));
+  const commentGroups = taskIds.length
+    ? await db.comment.groupBy({
+        by: ["taskId"],
+        where: { taskId: { in: taskIds }, deletedAt: null },
+        _count: { _all: true },
+      })
+    : [];
+  const commentCounts = new Map(commentGroups.map((g) => [g.taskId, g._count._all]));
+
   return phases.map((phase) => ({
     id: phase.id,
     order: phase.order,
@@ -112,6 +124,7 @@ export async function getPortalPhases(projectId: string, user: SessionUser): Pro
       status: task.status,
       dueDate: task.dueDate,
       milestone: task.milestone,
+      commentCount: commentCounts.get(task.id) ?? 0,
     })),
   }));
 }

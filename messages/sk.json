@@ -418,7 +418,8 @@
     "empty": {
       "title": "Zatiaľ žiadne úlohy",
       "description": "Pridajte prvú úlohu tejto fázy pomocou tlačidla „Pridať úlohu“."
-    }
+    },
+    "commentsHeading": "Komentáre"
   },
   "files": {
     "title": "Súbory",
@@ -514,6 +515,16 @@
         "active": "Prebieha",
         "done": "Hotovo",
         "skipped": "Preskočená"
+      },
+      "openTask": "Otvoriť úlohu „{title}“",
+      "commentCount": "{count, plural, one {# komentár} few {# komentáre} other {# komentárov}}",
+      "commentsHeading": "Komentáre",
+      "commentsHint": "Máte k tejto úlohe otázky, postrehy alebo požiadavky na zmenu? Napíšte ich sem — architekt dostane upozornenie na každý komentár.",
+      "dueDate": "Termín: {date}",
+      "taskStatus": {
+        "todo": "Čaká",
+        "in_progress": "Prebieha",
+        "done": "Hotovo"
       }
     },
     "documents": {

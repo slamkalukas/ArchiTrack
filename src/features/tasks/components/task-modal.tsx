@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { CommentThread } from "@/features/comments/components/comment-thread";
 import type { AssigneeType, TaskStatus, Visibility } from "@/components/shared/types";
 import type { PhaseDTO, TaskDTO } from "@/features/tasks/schemas";
 
@@ -143,7 +144,7 @@ function TaskModalForm({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-h-[85vh] max-w-lg overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{isEdit ? t("editTaskTitle") : t("newTaskTitle")}</DialogTitle>
         </DialogHeader>
@@ -305,6 +306,13 @@ function TaskModalForm({
             </Button>
           </DialogFooter>
         </form>
+
+        {isEdit && task && (
+          <div className="border-t border-border pt-4">
+            <h3 className="mb-3 text-sm font-medium text-foreground">{t("commentsHeading")}</h3>
+            <CommentThread subjectKind="task" subjectId={task.id} />
+          </div>
+        )}
       </DialogContent>
     </Dialog>
   );

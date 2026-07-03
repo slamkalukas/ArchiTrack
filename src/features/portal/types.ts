@@ -49,6 +49,8 @@ export interface PortalPhaseTask {
   status: "TODO" | "IN_PROGRESS" | "DONE";
   dueDate: string | null;
   milestone: boolean;
+  /** Live comments on the task (clients may add feedback/change requests here). */
+  commentCount: number;
 }
 
 export interface PortalPhase {

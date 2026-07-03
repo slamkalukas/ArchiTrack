@@ -418,7 +418,8 @@
     "empty": {
       "title": "No tasks yet",
       "description": "Add this phase's first task using the \"Add task\" button."
-    }
+    },
+    "commentsHeading": "Comments"
   },
   "files": {
     "title": "Files",
@@ -514,6 +515,16 @@
         "active": "Active",
         "done": "Done",
         "skipped": "Skipped"
+      },
+      "openTask": "Open task “{title}”",
+      "commentCount": "{count, plural, one {# comment} other {# comments}}",
+      "commentsHeading": "Comments",
+      "commentsHint": "Questions, feedback or change requests about this task? Write them here — the architect is notified about every comment.",
+      "dueDate": "Due date: {date}",
+      "taskStatus": {
+        "todo": "To do",
+        "in_progress": "In progress",
+        "done": "Done"
       }
     },
     "documents": {

@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { Check, Circle, Dot } from "lucide-react";
 import { Badge, type badgeVariants } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { cn } from "@/lib/utils";
+import { PortalTaskItem } from "@/features/portal/components/portal-task-item";
 import type { VariantProps } from "class-variance-authority";
 import type { PortalPhase } from "@/features/portal/types";
 
@@ -56,41 +55,10 @@ export async function ProgressPhaseCard({ phase }: ProgressPhaseCardProps) {
         {phase.tasks.length === 0 ? (
           <p className="text-sm text-muted-foreground">{t("noVisibleTasks")}</p>
         ) : (
-          <ul className="flex flex-col gap-2.5">
+          <ul className="flex flex-col gap-1.5">
             {phase.tasks.map((task) => (
-              <li key={task.id} className="flex items-start gap-2.5 text-sm">
-                <span className="mt-0.5 shrink-0 text-muted-foreground">
-                  {task.status === "DONE" ? (
-                    <Check className="size-4 text-primary" />
-                  ) : task.status === "IN_PROGRESS" ? (
-                    <Dot className="size-4 text-status-in-progress" strokeWidth={4} />
-                  ) : (
-                    <Circle className="size-3.5" />
-                  )}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span
-                    className={cn(
-                      "text-foreground",
-                      task.status === "DONE" && "text-muted-foreground line-through decoration-muted-foreground/50",
-                    )}
-                  >
-                    {task.title}
-                    {task.milestone && (
-                      <span className="ml-1.5 text-primary" aria-label={t("milestone")}>
-                        ◆
-                      </span>
-                    )}
-                  </span>
-                  {task.description && (
-                    <span className="block text-xs text-muted-foreground">{task.description}</span>
-                  )}
-                </span>
-                {task.dueDate && (
-                  <span className="shrink-0 text-xs text-muted-foreground">
-                    {new Date(task.dueDate).toLocaleDateString()}
-                  </span>
-                )}
+              <li key={task.id}>
+                <PortalTaskItem task={task} phaseName={phase.name} />
               </li>
             ))}
           </ul>
